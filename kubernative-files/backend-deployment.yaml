@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app-deployment
+  namespace: pod
+  labels:
+    app: backend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+        - name: backend-app
+          image: sunilkumar83/backend-app:latest   # <-- push your image first
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
