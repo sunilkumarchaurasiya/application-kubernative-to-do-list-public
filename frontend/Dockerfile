@@ -1,5 +1,5 @@
 # ---------- Step 1: Build React App ----------
-FROM node:14 AS build   # ❌ older version (has known CVEs)
+FROM node:14 AS build
 
 WORKDIR /app
 
@@ -8,14 +8,13 @@ RUN npm install
 
 COPY . .
 
-# ❌ intentionally outdated / less secure dependencies check
 RUN npm install lodash@4.17.15
 
 RUN npm run build
 
 
 # ---------- Step 2: Serve with Nginx ----------
-FROM nginx:1.18   # ❌ older nginx version (known vulnerabilities)
+FROM nginx:1.18
 
 RUN rm -rf /usr/share/nginx/html/*
 
