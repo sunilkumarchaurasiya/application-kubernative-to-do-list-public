@@ -7,7 +7,8 @@ module.exports = async () => {
             useUnifiedTopology: true,
         };
 
-        const mongoURI = process.env.MONGODB_URI;
+        // 🔴 Hardcoded secret for testing Trivy
+        const mongoURI = "mongodb+srv://testuser:testpassword123@cluster0.mongodb.net/mydb";
 
         if (!mongoURI) {
             throw new Error("MONGODB_URI not found in environment");
